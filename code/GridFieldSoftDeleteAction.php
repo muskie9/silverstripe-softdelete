@@ -1,7 +1,21 @@
 <?php
 
+namespace LeKoala\SoftDelete\Forms\GridField;
+
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridField_ActionProvider;
+use SilverStripe\Forms\GridField\GridField_ColumnProvider;
+use SilverStripe\Forms\GridField\GridField_FormAction;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\HasManyList;
+use SilverStripe\ORM\ManyManyList;
+use SilverStripe\ORM\ValidationException;
+
 /**
  * A GridField action to handle soft delete
+ *
+ * Class GridFieldSoftDeleteAction
+ * @package LeKoala\SoftDelete\Forms\GridField
  */
 class GridFieldSoftDeleteAction implements GridField_ColumnProvider, GridField_ActionProvider
 {
@@ -94,9 +108,9 @@ class GridFieldSoftDeleteAction implements GridField_ColumnProvider, GridField_A
      *
      * @param GridField $gridField
      * @param string $actionName
-     * @param mixed $arguments
-     * @param array $data - form data
-     * @return void
+     * @param array $arguments
+     * @param array $data
+     * @throws ValidationException
      */
     public function handleAction(GridField $gridField, $actionName, $arguments,
                                  $data)
